@@ -15,56 +15,62 @@
     <div class="slider">
         <ul class="slides">
             <li>
-                <img src="http://alternativealexandriawaterfrontplan.com/wp-content/uploads/home-buying-big-houses-making-comeback_535580.jpg">
-                <div class="caption center-align">
-                    <h3>This is our big Tagline!</h3>
-                    <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
-                </div>
-            </li>
-            <li>
                 <img src="http://www.gulfshores.com/!userfiles/subheads/LEISURE/Stay/AGC_beachhouse_Subhead-img-min-min.jpg">
                 <div class="caption left-align">
-                    <h3>Left Aligned Caption</h3>
-                    <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+                    <h3>Welcome to Mortgage Calculator</h3>
+                    <h5>Fill in the form below to calculate your monthly payment</h5>
                 </div>
             </li>
             <li>
-                <img src="https://www.daiwahouse.com/English/businessfield/housing/images/kodate_main01.jpg">
-                <div class="caption right-align">
-                    <h3>Right Aligned Caption</h3>
-                    <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
-                </div>
-            </li>
-            <li>
-                <img src="https://www.lakeflato.com/sites/default/files/styles/hero/public/projects-media/29011_N38_board.jpg?itok=p5djqmxJ&c=bda82ec1fe6d040c03e6223852ce5c37">
-                <div class="caption center-align">
+                <img src="https://www.tatteredchick.net/wp-content/uploads/2018/01/Beverly-Hills-Million-Dollar-Homes.jpg">
+                <!--<div class="caption center-align">
                     <h3>This is our big Tagline!</h3>
                     <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
-                </div>
+                </div>-->
+            </li>
+            <li>
+                <img src="http://alternativealexandriawaterfrontplan.com/wp-content/uploads/home-buying-big-houses-making-comeback_535580.jpg">
+                <!--<div class="caption left-align">
+                    <h3>Right Aligned Caption</h3>
+                    <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+                </div>-->
+            </li>
+            <li>
+                <img src="https://nwhm.com/sites/default/files/slideshow/15-Trevi-P3_Rear%20Elevation.jpg">
+                <!--<div class="caption center-align">
+                    <h3>This is our big Tagline!</h3>
+                    <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+                </div>-->
             </li>
         </ul>
     </div>
 
-    <form action="">
-        <div class="space">
-            <label>APR%:
-                <input type="text" id="apr" name="APR" />
-            </label>
-            <label>Loan Term:
-                <input type="text" id="trm" name="APR" />
-            </label>
-            <label>Loan Amount:
-                <input type="text" id="amt" name="amt" />
-            </label>
-            <input type="text" id="pmt" name="mPmt" />
-        </div>
-        <a class="waves-effect waves-light btn">
-            <input type="button" id="sbt" value="Calculate" />
-        </a>
-        <a class="waves-effect waves-light btn">
-            <input type="reset" id="rst" value="Reset Form" />
-        </a>
-    </form>
+    <div class="forms">
+        <form action="">
+            <div class="space">
+                <label>APR%:
+                    <input type="text" id="apr" name="APR" />
+                </label>
+                <label>Loan Term (Years):
+                    <input type="text" id="trm" name="APR" />
+                </label>
+                <label>Loan Amount:
+                    <input type="text" id="amt" name="amt" />
+                </label>
+                <label>Down Payment:
+                    <input type="text" id="dpmt" name="dpmt" />
+                </label>
+                <input type="text" id="pmt" name="mPmt" />
+            </div>
+            <a class="waves-effect waves-light btn">
+                <input type="button" id="sbt" value="Calculate" />
+            </a>
+            <a class="waves-effect waves-light btn">
+                <input type="reset" id="rst" value="Reset Form" />
+            </a>
+        </form>
+    </div>
+
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
@@ -75,6 +81,7 @@
         var apr;
         var amt;
         var mPmt;
+        var dpmt;
 
         window.onload = function () {
             document.getElementById("apr").focus();
@@ -85,6 +92,7 @@
             term = document.getElementById("trm").value;
             apr = document.getElementById("apr").value;
             amt = document.getElementById("amt").value;
+            dpmt = document.getElementById("dpmt").value;
             apr /= 1200;
             term *= 12;
             mPmt = calculatePayment();
@@ -93,9 +101,9 @@
 
         function calculatePayment() {
             if (apr == 0) {
-                return amt / term
+                return (amt - dpmt) / term
             } else {
-                var payment = amt * (apr * Math.pow((1 + apr), term)) / (Math.pow((1 + apr), term) - 1);
+                var payment = (amt - dpmt) * (apr * Math.pow((1 + apr), term)) / (Math.pow((1 + apr), term) - 1);
                 return payment;
             }
         }
