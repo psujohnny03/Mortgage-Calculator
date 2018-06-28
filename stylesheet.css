@@ -1,5 +1,7 @@
 .space {
     width: 16.5%;
+    display: block;
+    margin: auto;
 }
 h3 {
     color: black;
@@ -7,9 +9,8 @@ h3 {
 h5 {
     color: black;
 }
-/*
-.forms {
-    display: block;
+.buttons {
     text-align: center;
-}
-*/
+ }
+ 
+
