@@ -1,5 +1,5 @@
 .space {
-    width: 16.5%;
+    width: 45%;
     display: block;
     margin: auto;
 }
@@ -12,5 +12,8 @@ h5 {
 .buttons {
     text-align: center;
  }
+.card {
+    padding: 5%;
+}
  
 
